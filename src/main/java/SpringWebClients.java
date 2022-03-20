@@ -20,7 +20,6 @@ public class SpringWebClients {
         api.postNewEvents()
                 .thenMany(api.getAllEvents())
                 .take(1)
-                .subscribeOn(Schedulers.newSingle("myThread"))
                 .subscribe();
 
         try {
