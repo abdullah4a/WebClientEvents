@@ -44,4 +44,16 @@ public class SpringWebClients {
                 .doOnNext(o -> System.out.println("GET: " + o));
     }
 
+
+    private Mono<Events> updateEvent(String id, String title, String price, String remarks) {
+        return webClient
+                .put()
+                .uri("/{id}", id)
+                .body(Mono.just(new Events(null, title, price, remarks)), Events.class)
+                .retrieve()
+                .bodyToMono(Events.class)
+                .doOnSuccess(o -> System.out.println("**********UPDATE " + o));
+    }
+
+
 }
