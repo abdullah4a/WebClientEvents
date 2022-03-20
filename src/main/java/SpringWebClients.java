@@ -18,7 +18,7 @@ public class SpringWebClients {
         SpringWebClients api = new SpringWebClients();
 
         api.postNewEvents()
-                .thenMany(api.getAllProducts())
+                .thenMany(api.getAllEvents())
                 .take(1)
                 .subscribeOn(Schedulers.newSingle("myThread"))
                 .subscribe();
@@ -37,7 +37,7 @@ public class SpringWebClients {
                 .doOnSuccess(o -> System.out.println("POST " + o));
     }
 
-    private Flux<Events> getAllProducts() {
+    private Flux<Events> getAllEvents() {
         return webClient
                 .get()
                 .retrieve()
