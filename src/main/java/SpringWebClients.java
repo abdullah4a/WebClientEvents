@@ -10,7 +10,7 @@ public class SpringWebClients {
 
     public SpringWebClients() {
         this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8080/Events")
+                .baseUrl("http://localhost:8080/events")
                 .build();
     }
 
