@@ -32,7 +32,7 @@ public class SpringWebClients {
     private Mono<ResponseEntity<Events>> postNewEvents() {
         return webClient
                 .post()
-                .body(Mono.just(new Events(0L, "Test", "Test", "Test")), Events.class)
+                .body(Mono.just(new Events(null, "Test", "Test", "Test")), Events.class)
                 .exchangeToMono(response -> response.toEntity(Events.class))
                 .doOnSuccess(o -> System.out.println("POST " + o));
     }
